@@ -1,0 +1,44 @@
+{
+    "metadata": {
+        "stations": [
+            {
+                "id": "S107",
+                "device_id": "S107",
+                "name": "East Coast Parkway",
+                "location": {
+                    "latitude": 1.3135,
+                    "longitude": 103.9625
+                }
+            },
+            {
+                "id": "S24",
+                "device_id": "S24",
+                "name": "Upper Changi Road North",
+                "location": {
+                    "latitude": 1.3678,
+                    "longitude": 103.9826
+                }
+            }
+        ],
+        "reading_type": "DBT 1M F",
+        "reading_unit": "deg C"
+    },
+    "items": [
+        {
+            "timestamp": "2025-11-14T02:40:00+08:00",
+            "readings": [
+                {
+                    "station_id": "S107",
+                    "value": 26.7
+                },
+                {
+                    "station_id": "S24",
+                    "value": 25.7
+                }
+            ]
+        }
+    ],
+    "api_info": {
+        "status": "healthy"
+    }
+}

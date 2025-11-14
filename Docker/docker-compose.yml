@@ -1,0 +1,55 @@
+services:
+  local-postgres-weather:
+    image: postgres:15
+    container_name: local-postgres-weather
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: weather_db
+    ports:
+      - "5431:5432"
+    volumes:
+      - weather_db_data:/var/lib/postgresql/data
+    networks:
+      - weather-compose-network
+  
+  pg-admin-weather:
+    image: dpage/pgadmin4
+    container_name: pgadmin-weather
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@weather.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8081:80" 
+    depends_on:
+      - local-postgres-weather
+    networks:
+      - weather-compose-network
+
+
+  weather-api-java:
+    image: maven:3.9.4-eclipse-temurin-17
+    container_name: weather-api-java
+    depends_on:
+      - local-postgres-weather
+    working_dir: /workspace
+    volumes:
+      - ..:/workspace:delegated
+    command: mvn -DskipTests spring-boot:run
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://local-postgres-weather:5432/weather_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      MAVEN_OPTS: -Xmx512m
+    ports:
+      - "8082:8080"
+    networks:
+      - weather-compose-network
+
+networks:
+  weather-compose-network:
+    driver: bridge
+    
+      
+volumes:
+  weather_db_data:

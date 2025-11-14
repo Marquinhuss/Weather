@@ -1,0 +1,9 @@
+/workspace/src/main/java/com/gntech/Model/ApiInfo.java
+/workspace/src/main/java/com/gntech/Model/Item.java
+/workspace/src/main/java/com/gntech/Model/Location.java
+/workspace/src/main/java/com/gntech/Model/Metadata.java
+/workspace/src/main/java/com/gntech/Model/Reading.java
+/workspace/src/main/java/com/gntech/Model/Station.java
+/workspace/src/main/java/com/gntech/Model/WeatherResponse.java
+/workspace/src/main/java/com/gntech/weathertime/Json/WeatherDeserializeTest.java
+/workspace/src/main/java/com/gntech/weathertime/WeathertimeApplication.java
